@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+    <div th:replace="fragments/header.html :: header">&nbsp;</div>
+<body class="container">
+    <div class="row">
+    <div class="col-5 border">
+        <p class="display-4">Financial Search</p>
+        <p>Previous tickers searched</p>
+        <div class="bg-dark text-white m-1 col-2 text-center" th:each="symbol: ${userSettings}">
+            <a th:text="${symbol.getTicker()}"></a>
+        </div>
+    <form action="#" th:action="@{/user/home}" th:object="${stockDataRequestForm}" method="post">
+        <span class="text-danger" th:if="${#fields.hasGlobalErrors()}">Global error</span><br/>
+        <input class="m-1 text-center" type="text" th:field="*{ticker}" placeholder="Ticker 'UEC'"/>
+        <span class="text-danger" th:if="${#fields.hasErrors('ticker')}" th:errors="*{ticker}">Ticker error</span><br/>
+        <input class="m-1 text-center" type="text" th:field="*{interval}" placeholder="Interval 'SIXTY_MIN'"/>
+        <span class="text-danger" th:if="${#fields.hasErrors('interval')}" th:errors="*{interval}">Interval error</span><br/>
+        <button type="submit" class="btn m-1">Request Data</button>
+    </form>
+    </div>
+    </div>
+</body>
+</html>

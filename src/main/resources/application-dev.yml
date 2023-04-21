@@ -1,0 +1,9 @@
+spring:
+  thymeleaf:
+    prefix: file:src/main/recources/templates/
+    cash: false
+
+  web:
+    recources:
+      static=location: file:src/main/recources/static/
+      scash-period: 0

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Data Display</title>
+</head>
+    <div th:replace="fragments/header.html :: header">&nbsp;</div>
+<body class="container pt-5 mt-5">
+    <div class="row">
+    <div class="col-3 border">
+        <p class="display-4">Financial Search</p>
+        <p>Previous tickers searched</p>
+        <div class="bg-dark text-white m-1 col-2 text-center" th:each="symbol: ${userSettings}">
+            <a th:text="${symbol.getTicker()}"></a>
+        </div>
+    </div>
+    <div class="col-9 text-center border">
+        <p>financial graph</p>
+    <div id="table" style="display: none;" th:replace="fragments/lineChart :: lineChart">&nbsp;</div>
+        <a href="/user/home">Go back home search another ticker symbol</a>
+    </div>
+    </div>
+</body>
+</html>

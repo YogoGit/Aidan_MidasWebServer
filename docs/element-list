@@ -1,0 +1,7 @@
+com.midaswebserver.midasweb
+com.midaswebserver.midasweb.apiModels
+com.midaswebserver.midasweb.controllers
+com.midaswebserver.midasweb.forms
+com.midaswebserver.midasweb.models.User
+com.midaswebserver.midasweb.repositories
+com.midaswebserver.midasweb.services

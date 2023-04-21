@@ -1,0 +1,23 @@
+
+<nav class="container-fluid" th:fragment="header">
+    <div class="navbar navbar-inverse navbar-expand-sm fixed-top bg-dark ps-5" role="navigation">
+        <a class="btn-dark navbar-brand" href="/">
+            <img class="text-danger" src="/templates/photos/RoanokeTradingLogo.png" alt="Roanoke Trading" style="width:40px;">
+        </a>
+        <!-- Links -->
+        <ul class="navbar-nav d-none d-sm-flex col-11" style="font-family: 'OCR A Extended', sans-serif;">
+            <li class="mx-3 col-8 text-left">
+                <p class="text-white" th:text="'Welcome ' + ${user.getUsername()}"></p>
+            </li>
+            <li class="nav-item mx-2 col-1 text-center">
+                <a class="btn-dark nav-link text-white" href="/login">Login</a>
+            </li>
+            <li class="nav-item mx-2 col-1 text-center">
+                <a class="btn-dark nav-link text-white" href="/logout">Logout</a>
+            </li>
+            <li class="nav-item mx-2 col-1 text-center">
+                <a class="btn-dark nav-link text-white" href="/user/home">Home</a>
+            </li>
+        </ul>
+    </div>
+</nav>
