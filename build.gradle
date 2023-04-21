@@ -1,0 +1,50 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.2'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.midaswebserver'
+version = '0.0.1'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+	maven { url 'https://jitpack.io' }
+}
+
+configurations {
+	jaxDoclet
+}
+
+dependencies {
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
+	implementation 'com.github.crazzyghost:alphavantage-java:1.6.2'
+	implementation 'org.springframework.session:spring-session-data-redis'
+	implementation 'org.springframework.security:spring-security-crypto:5.6.5'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'com.h2database:h2'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//runtimeOnly 'org.mariadb.jbdc:mariadb-java-client'
+
+
+}
+tasks.named("jar")  {
+	enabled = false
+}
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+task generateJavaDocs(type: Javadoc) {
+	source = sourceSets.main.allJava
+	destinationDir = reporting.file("MidasDocs")
+	options.docletpath = configurations.jaxDoclet.files.asType(List)
+	options.doclet = "com.midaswebserver.doclets"
+}
